@@ -85,8 +85,15 @@ public static void switchFrameByWebElement(WebElement frameElement)
 
      public static void scrollToPixel() {
     	 JavascriptExecutor js = (JavascriptExecutor)driver;
- 		js.executeScript("window.scrollTo(0, 500)");
+ 		js.executeScript("window.scrollTo(0, 150)");
      }
+     
+     //To tackle click intercepted issue
+     public static void scrollToClickElement(WebElement elementName) {
+    	 JavascriptExecutor jse = (JavascriptExecutor)driver;
+ 		jse.executeScript("var elem=arguments[0]; setTimeout(function() {elem.click();}, 100)", elementName);
+     }
+     
      
      // Click any element
      public static void onClick(WebElement element)

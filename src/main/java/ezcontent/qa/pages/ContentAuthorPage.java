@@ -25,7 +25,7 @@ public class ContentAuthorPage extends TestBase{
 	
 	@FindBy(xpath = "//h1[@class='js-quickedit-page-title page-title']")
 	WebElement header;
-	
+		
 	@FindBy(id = "edit-title-0-value")
 	WebElement FullName;
 	
@@ -47,7 +47,7 @@ public class ContentAuthorPage extends TestBase{
 	WebElement imageSelectbutton;
 	
 
-	@FindBy(xpath = "//*[contains(text(),\"Edit summary\")]")  
+	@FindBy(xpath = "//*[contains(text(),'Edit summary')]")  
 	WebElement summary;
 	
 	
@@ -90,12 +90,12 @@ public class ContentAuthorPage extends TestBase{
 	}
 	
 	
-
 	public void enterFullName(String fn) {
 		FullName.sendKeys(fn);
 	}
 	
 	public void uploadImage() throws InterruptedException {
+	
 		Avatar.click();
 		selectimagebutton.click();
 		Wait.Pause(5000);
