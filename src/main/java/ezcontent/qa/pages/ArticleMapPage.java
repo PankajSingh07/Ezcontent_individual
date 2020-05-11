@@ -21,7 +21,7 @@ public class ArticleMapPage extends TestBase {
   WebElement article;
   @FindBy(xpath="//h1[@class='js-quickedit-page-title page-title']")
   WebElement createArticle;
-  @FindBy(className = "fieldset__label")
+  @FindBy(xpath="//fieldset[@class='required-fields field-group-fieldset fieldset js-form-item form-item js-form-wrapper form-wrapper']//span[@class='fieldset__label']")
   List <WebElement> subSections;
   @FindBy(xpath="//label[@class='form-item__label js-form-required form-required']")
   WebElement titleFieldLabel;
@@ -81,26 +81,71 @@ public class ArticleMapPage extends TestBase {
   WebElement published;
   @FindBy(xpath="//span[@class='field field--name-title field--type-string field--label-hidden quickedit-field']")
   WebElement articleCreated;
-
+  @FindBy(xpath="//summary[@class='claro-details__summary claro-details__summary--accordion-item']")
+   List<WebElement> articleContentList;
+  @FindBy(xpath="//summary[text()='Simple XML Sitemap']")
+  WebElement simpleXMLSiteMapLabel;
+  @FindBy(xpath="//summary[text()='URL alias']")
+  WebElement urlAliasLabel;
+  @FindBy(xpath="//summary[text()='Authoring information']")
+  WebElement authoringInformationLabel;
+  @FindBy(xpath="//summary[text()='Promotion options']")
+  WebElement promotionOptionsLabel;
+  @FindBy(xpath="//label[text()='Revision log message']")
+  WebElement revisionLogMessageLabel;
+  @FindBy(xpath="//label[@for='edit-meta-changed']")
+  WebElement lastSavedLabel;
+  @FindBy(xpath="//label[@for='edit-meta-author']")
+  WebElement authorLabel1;
+  @FindBy(xpath="//summary[text()='Menu settings']")
+  WebElement menuSettingsLabel;
+  @FindBy(xpath="//summary[text()='Meta Tags']")
+  WebElement metaTagsLabel;
+  @FindBy(xpath="//summary[text()='Scheduling options']")
+  WebElement schedulingOptionsLabel;
+  @FindBy(xpath="//label[text()='Info Title']")
+  WebElement infoTitleLabel;
+  @FindBy(xpath="//input[@name='field_content[0][subform][field_title][0][value]']")
+  WebElement infoTitleField;
+  @FindBy(xpath="//label[text()='Short title']")
+  WebElement shortTitleLabel;
+  @FindBy(xpath="//input[@name='field_content[0][subform][field_short_title][0][value]']")
+  WebElement shortTitleField;
+  @FindBy(xpath="//label[text()='Info Body']")
+  WebElement infoBodyLabel;
+  @FindBy(xpath="//div[@class='cke_contents cke_reset']//iframe")
+  WebElement infoBodyFieldIframe;
+  @FindBy(xpath="//body[@class='cke_editable cke_editable_themed cke_contents_ltr cke_show_borders']")
+  WebElement infoBodyField;
+  @FindBy(xpath="//label[text()='URL']")
+  WebElement urlLabel;
+  @FindBy(xpath="//input[@name='field_content[0][subform][field_link][0][uri]']")
+  WebElement urlField;
+  @FindBy(xpath="//label[text()='Link text']")
+  WebElement linkTextLabel;
+  @FindBy(xpath="//input[@name='field_content[0][subform][field_link][0][title]']")
+  WebElement linkTextField;
+  
+  
   public ArticleMapPage() throws IOException {
   	PageFactory.initElements(driver, this); 
-  }
+   }
   public String contentHeading() {
     TestUtil.mouseHover(content);
     return content.getText();
-  }
+   }
   public String mousehoverOnContent() {
   	TestUtil.mouseHover(content);
     return addContent.getText();
-  }
+   }
   public boolean mousehoverOnAddContent() {
   	TestUtil.mouseHover(addContent);
     return article.isDisplayed();
-  }
+   }
   public String mousehoverOnArticle() {
   	TestUtil.mouseClick(article);
     return createArticle.getText();
-  }
+   }
   public List<String> verifySubSections() { 
   	List<String> options = new ArrayList<String>();
   	{ 
@@ -108,8 +153,8 @@ public class ArticleMapPage extends TestBase {
   		 options.add(webElement.getText());
   	  }
       return options;
-}
-	public boolean enterTitleFieldData() {
+      }
+  public boolean enterTitleFieldData() {
 		titleField.sendKeys("This is the Title field");
     return titleFieldLabel.isDisplayed();
 	}
@@ -155,41 +200,119 @@ public class ArticleMapPage extends TestBase {
     TestUtil.mouseClick(addParagraph);
     selectMap.click();
     }
-  
-  public String entergoogleMapFieldData() {
+  public String enterinfoTitleFieldData() {
+	  Wait.visibiltyOfElement(10, infoTitleField);
+	  infoTitleField.sendKeys("This is the info title field");
+	  return infoTitleLabel.getText();
+  }
+  public String entershortTitleFieldData() {
+	  shortTitleField.sendKeys("This is the short title field");
+	  return shortTitleLabel.getText();
+  }
+  public String enterInfoBodyFieldData() {
+	  JavascriptExecutor js = (JavascriptExecutor) driver;  
+	    js.executeScript("window.scrollBy(0,400)","");
+	  TestUtil.switchFrameByWebElement(infoBodyFieldIframe);
+	  Wait.visibiltyOfElement(10, infoBodyField);
+	  infoBodyField.sendKeys("This is the info body field");
+	  TestUtil.switchBackToWindow();
+	  return infoBodyLabel.getText();	
+  }
+   public String entergoogleMapFieldData() {
 	  Wait.visibiltyOfElement(10,googleMapField );
 	  googleMapField.sendKeys("This is the google map field");
 	  return googleMapLabel.getText();
   }
-
-   public boolean enterTagsFieldData() {
-
-	 JavascriptExecutor js = (JavascriptExecutor) driver;  
-	 js.executeScript("window.scrollBy(0,800)","");
-     TestUtil.mouseClick(taxonomy);
-	 tagsField.sendKeys("trump");
-     tagsField.sendKeys(Keys.RETURN);
-	
-	return tagsLabel.isDisplayed();
+   public String enterUrlFieldData() {
+	  urlField.sendKeys("/node");
+	  return urlLabel.getText();
+  }
+  public String enterLinkTextFieldData() {
+	  linkTextField.sendKeys("This is the link text field");
+	  return linkTextLabel.getText();
+  }
+  public boolean enterTagsFieldData() {
+	  JavascriptExecutor js = (JavascriptExecutor) driver;  
+		 js.executeScript("window.scrollBy(0,200)","");
+		 Wait.visibiltyOfElement(10, taxonomy);
+	     TestUtil.mouseClick(taxonomy);
+		 tagsField.sendKeys("trump");
+	     tagsField.sendKeys(Keys.RETURN);
+	     return tagsLabel.isDisplayed();
     }
-
-   public String enterFocusKeyword() {
+  public String enterFocusKeyword() {
 	focusKeyword.sendKeys("This is the focus keyword");
 	return focusKeywordLabel.getText();
 	}
-
+ // Approach 1 for Advanced menu
+  public boolean advancedMenuItem () throws InterruptedException {
+		boolean result = false;
+	    List<WebElement> menus = articleContentList;
+	    	for(int i =0;i< menus.size() ; i++) {
+	      
+	       if(menus.get(i).isDisplayed()); {
+	       	 Wait.Pause(5000);
+         TestUtil.mouseClick(menus.get(i));
+         System.out.println(menus.get(i).getText()); 
+         result = true;  
+	      }   	
+	    }
+	   if (result == false) {
+	  	 System.out.println("Advanced Menu Item is not found");
+	    }
+	  return result;  
+	  }
+//     Approach 2 for Advanced menu
+//    public boolean simpleXMLSiteField() {
+//	 	  TestUtil.mouseClick(simpleXMLSiteMapLabel);
+//	 	  return simpleXMLSiteMapLabel.isDisplayed();
+//	   }
+//	   public boolean urlAliasField() {
+//	 	  TestUtil.mouseClick(urlAliasLabel);
+//	 	  return urlAliasLabel.isDisplayed();
+//	   }
+//	   public boolean authoringInformationField() {
+//	 	  TestUtil.mouseClick(authoringInformationLabel);
+//	 	  return authoringInformationLabel.isDisplayed();
+//	   }
+//	   public boolean promotionOptionsField() {
+//	 	  TestUtil.mouseClick(promotionOptionsLabel);
+//	 	  return promotionOptionsLabel.isDisplayed();
+//	   }
+//	   public boolean revisionLogMessageField() {
+//	 	  return revisionLogMessageLabel.isDisplayed();
+//	   }
+//	   public boolean lastSavedField() {
+//	 	  return lastSavedLabel.isDisplayed();
+//	   }
+//	   public boolean authorField1() {
+//	 	  return authorLabel1.isDisplayed();
+//	   }
+//	   public boolean metaTagsField() {
+//		   TestUtil.mouseClick(metaTagsLabel);
+//		   return metaTagsLabel.isDisplayed();
+//	   }
+//	   public boolean schedulingOptionsField() {
+//		   TestUtil.mouseClick(schedulingOptionsLabel);
+//		   return schedulingOptionsLabel.isDisplayed();
+//	   }
+//	   public boolean menuSettingsField() {
+//		   TestUtil.mouseClick(menuSettingsLabel);
+//		   return menuSettingsLabel.isDisplayed();
+//	   }
+//   
    public boolean saveArticleContent() {
 	TestUtil.selectByValue(dropdown, "published");
 	TestUtil.onClick(published);
 	try {
 		Wait.Pause(5000);
-	} catch (InterruptedException e) {
+	    } catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-		
-	}
+		}
 	return articleCreated.isDisplayed();
-	}
+	    }
+   }
+   
+       
 
-
-}
