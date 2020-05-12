@@ -30,7 +30,7 @@ public class ArticleGalleryTest extends TestBase {
 		browserLaunch();
 		Gallery = new ArticleGalleryPage();
 		page = new LoginPage();
-		page.validateLogin(prop.getProperty("Admin"), prop.getProperty("Adminpass"));
+		page.validateLogin();
 		
 	}
 	

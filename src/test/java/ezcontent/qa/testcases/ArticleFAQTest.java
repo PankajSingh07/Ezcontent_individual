@@ -31,7 +31,7 @@ public class ArticleFAQTest extends TestBase{
 	@Test(priority = 1)
 	public void loginFunctionality() {
 
-		loginpage.validateLogin(prop.getProperty("Admin"), prop.getProperty("Adminpass"));
+		loginpage.validateLogin();
 		System.out.println("Login to website successfully");
 	}
 	

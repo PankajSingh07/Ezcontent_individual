@@ -32,7 +32,7 @@ public class LandingPageTest extends TestBase {
 		
 		landingpage = new LandingPage();
 		 
-		loginpage.validateLogin(prop.getProperty("username"), prop.getProperty("password"));
+		loginpage.validateLogin();
 		
 		
 	}

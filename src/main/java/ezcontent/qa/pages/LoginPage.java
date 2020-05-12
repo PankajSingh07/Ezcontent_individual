@@ -64,10 +64,11 @@ public class LoginPage extends TestBase {
 		return logo.isDisplayed();
 	}
 
-	public void validateLogin(String un, String pwd) {
-		username.sendKeys(un);
-		password.sendKeys(pwd);
+	public void validateLogin() {
+		username.sendKeys(prop.getProperty("adminUsername"));
+		password.sendKeys(prop.getProperty("adminPassword"));
 		loginButton.click();
+		Wait.pageLoad(25);
 	}
 
 

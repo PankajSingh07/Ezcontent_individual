@@ -31,7 +31,7 @@ public class ArticleMediaTest extends TestBase {
 
 	@Test(priority = 1)
 	public void login() {
-		loginpage.validateLogin(prop.getProperty("Admin"), prop.getProperty("Adminpass"));
+		loginpage.validateLogin();
 		Wait.pageLoad(4);
 	}
 

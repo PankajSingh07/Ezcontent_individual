@@ -28,7 +28,7 @@ public class ArticleMapTest extends TestBase{
 	}
 	@Test(priority=1)
 	public void loginTest() {
-    loginpage.validateLogin(prop.getProperty("Admin"), prop.getProperty("Adminpass"));
+	loginpage.validateLogin();
     }
 	@Test(priority=2)
 	public void verifyContent() {

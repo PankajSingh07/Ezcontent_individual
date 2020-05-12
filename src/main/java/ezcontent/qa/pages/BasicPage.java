@@ -106,19 +106,21 @@ public class BasicPage extends TestBase{
 	}
 	
 	public boolean menus() {
-		if(RivisionMessage.isDisplayed());{
+		if(RivisionMessage.isDisplayed())
+		{
 	    RivisionMessage.sendKeys("test");
+		}
 	    TestUtil.scroll(0, 300);
-		if (menuSetting.isDisplayed());
-		if(metaTags.isDisplayed());
-		if(xmlSiteMap.isDisplayed());
-		if(promotionOption.isDisplayed());
+		menuSetting.isDisplayed();
+		metaTags.isDisplayed();
+		xmlSiteMap.isDisplayed();
+		promotionOption.isDisplayed();
 		
 		return true;
 		}
 		
 		
-		}
+		
 		
 	public String successfully() {
 		return success.getText();

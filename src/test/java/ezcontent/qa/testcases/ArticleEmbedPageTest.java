@@ -28,7 +28,7 @@ public class ArticleEmbedPageTest extends TestBase {
 			browserLaunch();
 			embed = new ArticleEmbedPage();
 			page = new LoginPage();
-			page.validateLogin(prop.getProperty("Admin"),prop.getProperty("Adminpass"));
+			page.validateLogin(); 
 		}
 		
 		@Test(priority = 0)

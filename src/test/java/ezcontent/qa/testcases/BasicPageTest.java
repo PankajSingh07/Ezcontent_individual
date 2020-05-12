@@ -30,7 +30,7 @@ public class BasicPageTest extends TestBase {
 
 	@Test(priority = 1)
 	public void loginTest() {
-		login.validateLogin(prop.getProperty("Admin"), prop.getProperty("Adminpass"));
+		login.validateLogin();
 
 	}
 

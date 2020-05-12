@@ -6,51 +6,67 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
-
-
 import ezcontent.qa.base.TestBase;
 
 public class TestUtil extends TestBase {
-
-
-//	public static long PageLoadTimeout = 20;
-//	public static long ImplicitWait = 10;
-static String currentDirec= System.getProperty("user.dir");
- 
-	
-	
-
-	
 	public static Select select;
 	public static Actions action;
+static String currentDirec= System.getProperty("user.dir");
+ 
+	// Switch by Index
+	public static void switchFrameByIndex(int index) {
+		driver.switchTo().frame(index);
+	}
+
+//Switch by frame name or Id
+	public static void switchFrameByNameOrId(String NameOrId) {
+		driver.switchTo().frame("String NameOrId");
+	}
+
+//Switch by frame WebElement
+	public static void switchFrameByWebElement(WebElement iframeElement) {
+		driver.switchTo().frame(iframeElement);
+	}
+
+//Switch back to the main window from iframe
+	public static void switchBackToWindow() {
+		driver.switchTo().defaultContent();
+	}
+
+// Select ByVisibleText method
+	public static void selectByVisibleText(WebElement element, String visibleText) {
+		Select oSelect = new Select(element);
+		oSelect.selectByVisibleText("visibleText");
+
+	}
+
+// To scroll page or viewport the Webelement
+	public static void viewportWebElement(WebElement element) {
+		JavascriptExecutor jse2 = (JavascriptExecutor) driver;
+		jse2.executeScript("arguments[0].scrollIntoView()", element);
+	}
+
+// To scroll down the page by pixel
+	public static void scrollDownByPixel(int pixel) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,pixel)");	
+	}
+
 
 	//Navigate to any url
 	public static void navigateToURL(String url) 
 	{
 		driver.navigate().to(url);
-
 	}	
-	
-	// Switch by Index
-	public static void switchFrameByIndex(int index)
-	{
-		driver.switchTo().frame(index);
-	}
 
     //Switch by frame name
 	public static void switchFrameByName(String name)
@@ -58,25 +74,11 @@ static String currentDirec= System.getProperty("user.dir");
 		driver.switchTo().frame(name);
 	}
 
-	// Switch by frame ID
-
+// Switch by frame ID
 public static void switchFrameById(String frameId)
 {
 	driver.switchTo().frame(frameId);
 }
-
-
-public static void switchFrameByWebElement(WebElement frameElement)
-{
-	driver.switchTo().frame(frameElement);
-}
-
-    
-	// Switch back to the main window from iframe
-	public static void switchBackToWindow() {
-
-		driver.switchTo().defaultContent();
-	}
 
 	// switch to simple alert
 	public static void switchToSimpleAlert() {
@@ -92,8 +94,7 @@ public static void switchFrameByWebElement(WebElement frameElement)
          try {
              element.clear();
          } catch (Exception e) {
-             System.out.print(String.format("The following element could not be cleared: [%s]", element.getText()));
-
+            System.out.print(String.format("The following element could not be cleared: [%s]", element.getText()));
          }
         }
          
@@ -101,17 +102,14 @@ public static void switchFrameByWebElement(WebElement frameElement)
     	 JavascriptExecutor js = (JavascriptExecutor)driver;
  		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
      }
-     
-     
    
      public static String timeStamp() {
     	 return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
-
-
      }
      
+   
      //To capture screenshot
-     public static void captureScreenshot() {
+     public static String captureScreenshot() {
     	 
     	 File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
     	 String fileWithPath = currentDirec+File.separator+"test-output"+File.separator+timeStamp()+".png"; 
@@ -119,18 +117,17 @@ public static void switchFrameByWebElement(WebElement frameElement)
     	 try {
 			FileUtils.copyFile(srcFile,DestFile );
 		} catch (IOException e) {
-			
 			e.printStackTrace();
 		}
-    	 
+
+		return fileWithPath;
     	 
     	 
      }
      
      public static void jsExecuterClick(WebElement element) {
     	 JavascriptExecutor jse = (JavascriptExecutor)driver;
- 		jse.executeScript("arguments[0].click();", element); 
-    	 
+ 		jse.executeScript("arguments[0].click();", element); 	 
      }
 
      public static void scrollToPixel() {

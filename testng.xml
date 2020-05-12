@@ -5,8 +5,12 @@
   <classes>
       <class name="ezcontent.qa.testcases.LoginPageTest"/>
       <class name="ezcontent.qa.testcases.ForgetPasswordPageTest"/>
+      <class name="ezcontent.qa.testcases.ArticleQuotePageTest"/>
+      <class name="ezcontent.qa.testcases.ArticleGalleryCarouselPage"/>
+      
       <class name="ezcontent.qa.testcases.ArticleEmbedPage"/>
      <class name="ezcontent.qa.testcases.ArticleMapPage"/>
+
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
