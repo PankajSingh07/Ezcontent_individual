@@ -9,9 +9,6 @@ import ezcontent.qa.base.TestBase;
 import ezcontent.qa.pages.ArticleMapPage;
 import ezcontent.qa.pages.LoginPage;
 
-
-
-
 public class ArticleMapTest extends TestBase{
 
 	LoginPage loginpage;

@@ -109,7 +109,7 @@ public static void switchFrameById(String frameId)
      
    
      //To capture screenshot
-     public static void captureScreenshot() {
+     public static String captureScreenshot() {
     	 
     	 File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
     	 String fileWithPath = currentDirec+File.separator+"test-output"+File.separator+timeStamp()+".png"; 
@@ -119,6 +119,10 @@ public static void switchFrameById(String frameId)
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		return fileWithPath;
+    	 
+    	 
      }
      
      public static void jsExecuterClick(WebElement element) {
