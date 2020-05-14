@@ -16,22 +16,22 @@ import ezcontent.qa.pages.LoginPage;
 import ezcontent.qa.util.TestUtil;
 import ezcontent.qa.util.Wait;
 
-public class LoginPageTest extends TestBase {
+public class LoginPageTest extends LoginPage {
 
-	LoginPage loginpage;
+	//LoginPage loginpage;
 	DashboardPage dashboardPage;
 	TestUtil util = new TestUtil();
 
-	public LoginPageTest() {
-		super(); // to call the super class(BaseClass) constructor to get prop value
+//	public LoginPageTest() {
+//		super(); // to call the super class(BaseClass) constructor to get prop value
+//
+//	}
 
-	}
-
-	@BeforeClass
-	public void setup() {
-		TestBase.browserLaunch();     // launch browser with url
-		loginpage = new LoginPage();  // create instance of LoginPage class				
-	}
+//	@BeforeClass
+//	public void setup() {
+//		TestBase.browserLaunch();     // launch browser with url
+//		loginpage = new LoginPage();  // create instance of LoginPage class				
+//	}
 
 
 	@Test(priority = 0)

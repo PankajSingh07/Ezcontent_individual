@@ -1,31 +1,15 @@
 package ezcontent.qa.testcases;
-import java.io.IOException;
+
 import java.util.Arrays;
 import java.util.List;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import ezcontent.qa.base.TestBase;
 import ezcontent.qa.pages.ArticleMapPage;
-import ezcontent.qa.pages.LoginPage;
 
 
-public class ArticleMapTest extends TestBase{
+public class ArticleMapTest extends ArticleMapPage {
 
-	LoginPage loginpage;
-	ArticleMapPage articlemapPage;
 	
-	public ArticleMapTest() throws IOException {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-   @BeforeClass
-	public void setup() throws IOException {
-		browserLaunch();
-		loginpage = new LoginPage();
-		articlemapPage = new ArticleMapPage();
-	}
 	@Test(priority=1)
 	public void loginTest() {
 	loginpage.validateLogin();
@@ -135,46 +119,19 @@ public class ArticleMapTest extends TestBase{
    public void focusKeywordField() {
     String focusKeyword = articlemapPage.enterFocusKeyword();
 	Assert.assertEquals(focusKeyword, prop.getProperty("labelFocusKeyword"));
-   }   
-//    @Test(priority=23)
-//    public void verifyRightSideLabels() {
-//    boolean lastSavedLabel = articlemapPage.lastSavedField();
-//    Assert.assertTrue(lastSavedLabel);
-//    boolean authorLabel1 = articlemapPage.authorField1();
-//    Assert.assertTrue(authorLabel1);
-//    boolean revisionLabel = articlemapPage.revisionLogMessageField();
-//    Assert.assertTrue(revisionLabel);
-//    boolean menuSettingsLabel = articlemapPage.menuSettingsField();
-//    Assert.assertTrue(menuSettingsLabel);
-//    boolean metaTagsLabel = articlemapPage.metaTagsField();
-//    Assert.assertTrue(metaTagsLabel);
-//    boolean simpleXMLSiteLabel = articlemapPage.simpleXMLSiteField();
-//    Assert.assertTrue(simpleXMLSiteLabel);
-//    boolean schedulingOptionsLabel = articlemapPage.schedulingOptionsField();
-//    Assert.assertTrue(schedulingOptionsLabel);
-//    boolean urlAliasLabel = articlemapPage.urlAliasField();
-//    Assert.assertTrue(urlAliasLabel);
-//    boolean authoringInformationLabel = articlemapPage.authoringInformationField();
-//    Assert.assertTrue(authoringInformationLabel);
-//    boolean promotionsOptionsLabel = articlemapPage.promotionOptionsField();
-//    Assert.assertTrue(promotionsOptionsLabel);
-//      }
+    }   
     @Test(priority = 23)
  	public void verifyRightSideLabels() throws InterruptedException {
  	boolean fields =articlemapPage.advancedMenuItem();
  	Assert.assertTrue(fields);
 	}
     @Test(priority=24)
-   public void saveArticleContent() {
-    boolean articleCreated =articlemapPage.saveArticleContent();
+    public void saveArticleContent() {
+    boolean articleCreated =articlemapPage.saveArticleContents();
 	Assert.assertTrue(articleCreated);
     }
-    @AfterClass
-    public void closeBrowser()
-	{
-		browserQuit();
-	}
-	
+    
+   
 
 
 }

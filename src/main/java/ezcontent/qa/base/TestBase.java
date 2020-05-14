@@ -1,25 +1,31 @@
 package ezcontent.qa.base;
 
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import ezcontent.qa.util.Wait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import ezcontent.qa.pages.ArticleMapPage;
+import ezcontent.qa.pages.ContentLiveBlogPage;
+import ezcontent.qa.pages.LoginPage;
 import java.io.File;
 import java.io.FileInputStream;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
 
 
 public class TestBase {
 
 	public static WebDriver driver;
 	public static Properties prop;
+	public static LoginPage loginpage;
+    public static ArticleMapPage articlemapPage;
+	public static ContentLiveBlogPage contentliveblogPage;
+	
 	
 
 	static String currentDir = System.getProperty("user.dir");
@@ -104,12 +110,28 @@ public class TestBase {
 		driver.get(prop.getProperty("devurl"));
 		
 	}
-
+	
+	
 	public static void browserQuit() {	
 		driver.quit();
 
 	}
 
+	@BeforeClass
+	public void setup() throws IOException {
+		browserLaunch();
+		loginpage = new LoginPage();
+		articlemapPage = new ArticleMapPage();
+		contentliveblogPage = new ContentLiveBlogPage();
+		
 	}
 	
+	@AfterClass
+    public void closeBrowser()
+		{
+			browserQuit();
+		}
 	
+
+	
+}

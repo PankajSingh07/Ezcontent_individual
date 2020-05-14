@@ -1,5 +1,5 @@
 package ezcontent.qa.pages;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.JavascriptExecutor;
@@ -83,26 +83,6 @@ public class ArticleMapPage extends TestBase {
   WebElement articleCreated;
   @FindBy(xpath="//summary[@class='claro-details__summary claro-details__summary--accordion-item']")
    List<WebElement> articleContentList;
-  @FindBy(xpath="//summary[text()='Simple XML Sitemap']")
-  WebElement simpleXMLSiteMapLabel;
-  @FindBy(xpath="//summary[text()='URL alias']")
-  WebElement urlAliasLabel;
-  @FindBy(xpath="//summary[text()='Authoring information']")
-  WebElement authoringInformationLabel;
-  @FindBy(xpath="//summary[text()='Promotion options']")
-  WebElement promotionOptionsLabel;
-  @FindBy(xpath="//label[text()='Revision log message']")
-  WebElement revisionLogMessageLabel;
-  @FindBy(xpath="//label[@for='edit-meta-changed']")
-  WebElement lastSavedLabel;
-  @FindBy(xpath="//label[@for='edit-meta-author']")
-  WebElement authorLabel1;
-  @FindBy(xpath="//summary[text()='Menu settings']")
-  WebElement menuSettingsLabel;
-  @FindBy(xpath="//summary[text()='Meta Tags']")
-  WebElement metaTagsLabel;
-  @FindBy(xpath="//summary[text()='Scheduling options']")
-  WebElement schedulingOptionsLabel;
   @FindBy(xpath="//label[text()='Info Title']")
   WebElement infoTitleLabel;
   @FindBy(xpath="//input[@name='field_content[0][subform][field_title][0][value]']")
@@ -127,7 +107,7 @@ public class ArticleMapPage extends TestBase {
   WebElement linkTextField;
   
   
-  public ArticleMapPage() throws IOException {
+  public ArticleMapPage() {
   	PageFactory.initElements(driver, this); 
    }
   public String contentHeading() {
@@ -244,7 +224,6 @@ public class ArticleMapPage extends TestBase {
 	focusKeyword.sendKeys("This is the focus keyword");
 	return focusKeywordLabel.getText();
 	}
- // Approach 1 for Advanced menu
   public boolean advancedMenuItem () throws InterruptedException {
 		boolean result = false;
 	    List<WebElement> menus = articleContentList;
@@ -262,46 +241,7 @@ public class ArticleMapPage extends TestBase {
 	    }
 	  return result;  
 	  }
-//     Approach 2 for Advanced menu
-//    public boolean simpleXMLSiteField() {
-//	 	  TestUtil.mouseClick(simpleXMLSiteMapLabel);
-//	 	  return simpleXMLSiteMapLabel.isDisplayed();
-//	   }
-//	   public boolean urlAliasField() {
-//	 	  TestUtil.mouseClick(urlAliasLabel);
-//	 	  return urlAliasLabel.isDisplayed();
-//	   }
-//	   public boolean authoringInformationField() {
-//	 	  TestUtil.mouseClick(authoringInformationLabel);
-//	 	  return authoringInformationLabel.isDisplayed();
-//	   }
-//	   public boolean promotionOptionsField() {
-//	 	  TestUtil.mouseClick(promotionOptionsLabel);
-//	 	  return promotionOptionsLabel.isDisplayed();
-//	   }
-//	   public boolean revisionLogMessageField() {
-//	 	  return revisionLogMessageLabel.isDisplayed();
-//	   }
-//	   public boolean lastSavedField() {
-//	 	  return lastSavedLabel.isDisplayed();
-//	   }
-//	   public boolean authorField1() {
-//	 	  return authorLabel1.isDisplayed();
-//	   }
-//	   public boolean metaTagsField() {
-//		   TestUtil.mouseClick(metaTagsLabel);
-//		   return metaTagsLabel.isDisplayed();
-//	   }
-//	   public boolean schedulingOptionsField() {
-//		   TestUtil.mouseClick(schedulingOptionsLabel);
-//		   return schedulingOptionsLabel.isDisplayed();
-//	   }
-//	   public boolean menuSettingsField() {
-//		   TestUtil.mouseClick(menuSettingsLabel);
-//		   return menuSettingsLabel.isDisplayed();
-//	   }
-//   
-   public boolean saveArticleContent() {
+   public boolean saveArticleContents() {
 	TestUtil.selectByValue(dropdown, "published");
 	TestUtil.onClick(published);
 	try {

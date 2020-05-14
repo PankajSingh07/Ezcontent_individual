@@ -1,33 +1,12 @@
 package ezcontent.qa.testcases;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-import org.testng.annotations.BeforeClass;
-import java.io.IOException;
-import ezcontent.qa.base.TestBase;
 import ezcontent.qa.pages.ContentLiveBlogPage;
-import ezcontent.qa.pages.LoginPage;
 
-public class ContentLiveBlogTest extends TestBase {
+
+public class ContentLiveBlogTest extends ContentLiveBlogPage {
 	
-
-		LoginPage loginpage;
-		ContentLiveBlogPage contentliveblogPage;
-		
-		public ContentLiveBlogTest() throws IOException {
-			super();
-			// TODO Auto-generated constructor stub
-		}
-
-
-		@BeforeClass
-		public void setup() throws IOException {
-		browserLaunch();
-		loginpage = new LoginPage();
-		contentliveblogPage = new ContentLiveBlogPage();
-			
-		}
 		
 		@Test(priority=1)
 		public void loginTest() {
@@ -99,9 +78,6 @@ public class ContentLiveBlogTest extends TestBase {
 	    Assert.assertTrue(liveBlogcontent);
 	    }
  	    
-        @AfterClass
-	    public void closeBrowser() {
-		browserQuit();
-     	}
+     
 
 }
