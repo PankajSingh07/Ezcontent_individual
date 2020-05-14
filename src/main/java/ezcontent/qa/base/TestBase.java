@@ -102,7 +102,7 @@ public class TestBase {
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.get(prop.getProperty("devurl"));
-		Wait.pageLoad(20);
+		
 	}
 
 	public static void browserQuit() {	
