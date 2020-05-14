@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -186,7 +187,15 @@ public static void switchFrameById(String frameId)
 		js.executeScript("window.scrollBy(" + String.valueOf(startdimension) + "," + String.valueOf(enddimension) + ")");
 
 	}
-
+	
+	//below element locators are common and not content dependent, hence mentioned the locators here only
+		public static void deleteContent() throws Exception
+		{
+			driver.findElement(By.xpath("//a[@class='nav-link'][contains(text(),'Delete')]")).click();
+			Wait.Pause(5000);
+			driver.findElement(By.xpath("//input[@id='edit-submit']")).click();
+			
+		}
 	
 
 

@@ -10,6 +10,8 @@ import org.testng.annotations.Test;
 import ezcontent.qa.base.TestBase;
 import ezcontent.qa.pages.ArticleFAQPage;
 import ezcontent.qa.pages.LoginPage;
+import ezcontent.qa.util.TestUtil;
+import ezcontent.qa.util.Wait;
 
 public class ArticleFAQTest extends TestBase{
 	
@@ -93,8 +95,10 @@ public class ArticleFAQTest extends TestBase{
 	}
 	
 	@Test(priority = 11)
-	public void saveContentTest() {
+	public void saveContentTest() throws Exception {
 		article.saveContent();
+		Wait.Pause(5000);
+		TestUtil.deleteContent();
 		
 	}
 
