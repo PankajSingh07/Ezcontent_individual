@@ -13,9 +13,6 @@ import ezcontent.qa.util.Wait;
 
 public class ArticleGalleryPage extends TestBase {
 
-	ArticleEmbedPage em ;
-
-	
 	@FindBy(xpath = "//div[@class = 'paragraphs-add-dialog js-hide ui-dialog-content ui-widget-content']/ul/li[3]/input")
 	WebElement Gallery;
 	
@@ -48,55 +45,54 @@ public class ArticleGalleryPage extends TestBase {
 	
 	public ArticleGalleryPage() throws IOException {
 		PageFactory.initElements(driver, this);
-		em = new ArticleEmbedPage();
 	}
 	
 	public boolean validateMenu()
 	{
-		return em.validateMenu();
+		return embed.validateMenu();
 	}
 	
 	public boolean validateAddContent()
 	{
-		return em.validateAddContent();
+		return embed.validateAddContent();
 	}
 	
 	public boolean validateContentType() {
 		
-		return em.validateContentType();
+		return embed.validateContentType();
 	}
 	
 	public String verifyRedirectionToArticlePage() {
 		
-		return em.verifyRedirectionToArticlePage();
+		return embed.verifyRedirectionToArticlePage();
 	}
 	
 	public void verifyTitleField() {
-		em.verifyTitleField();
+		embed.verifyTitleField();
 	}
 	
 	public boolean verifyShortTitle() {
-		return em.verifyShortTitle();
+		return embed.verifyShortTitle();
 	}
 	
 	public String verifysubhead() {
-		return em.verifysubhead();
+		return embed.verifysubhead();
 	}
 	
 	public void verifyAuthorField( ) {
-		 em.verifyAuthorField();
+		embed.verifyAuthorField();
 	}
 	
 	public String verifySummaryField() {
-		return em.verifySummaryField();
+		return embed.verifySummaryField();
 	}
 	
 	public String selectImageFromThumbnail() {
-		return em.selectImageFromThumbnail();
+		return embed.selectImageFromThumbnail();
 	}
 	
 	public void verifyaddparagraph() {
-		em.verifyAddParagraph();
+		embed.verifyAddParagraph();
 	}
 	
 	public boolean selectParagraph() {
@@ -127,20 +123,20 @@ public class ArticleGalleryPage extends TestBase {
 	
 	
 	public void verifyTaxonomyField() {
-		em.verifyTaxonomyField();
+		embed.verifyTaxonomyField();
 	}
 	
 	public String verifyFocusField() {
-		return em.verifyFocusField();
+		return embed.verifyFocusField();
 	}
 	
 	public boolean saveasPublished() {
 
-		return em.saveasPublished();
+		return embed.saveasPublished();
 	}
 	
 	public boolean advancedMenuItem() {
-		return em.advancedMenuItem();
+		return embed.advancedMenuItem();
 	}
 
 

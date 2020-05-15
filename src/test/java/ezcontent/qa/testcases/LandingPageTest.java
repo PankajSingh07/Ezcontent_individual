@@ -158,12 +158,12 @@ public class LandingPageTest extends TestBase {
 	}
 	
 
-	@AfterMethod
-	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException { 
-	    if (testResult.getStatus() == ITestResult.FAILURE) { 
-	        TestUtil.captureScreenshot();
-	    } 
-	}
+//	@AfterMethod
+//	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException { 
+//	    if (testResult.getStatus() == ITestResult.FAILURE) { 
+//	        TestUtil.captureScreenshot();
+//	    } 
+//	}
 	
 //	@AfterClass
 //	public void closeBrowser() {

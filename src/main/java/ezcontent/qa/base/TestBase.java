@@ -141,7 +141,7 @@ public class TestBase {
 	@BeforeClass
 	public void setup() throws IOException {
 		browserLaunch();
-		log.info("******** Invoking Browser ********");
+		log.info("******** Invoking Browser ************");
 		loginpage = new LoginPage();
 		articlemapPage = new ArticleMapPage();
 		contentliveblogPage = new ContentLiveBlogPage();
