@@ -3,6 +3,7 @@ package ezcontent.qa.testcases;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -16,6 +17,8 @@ import ezcontent.qa.pages.LoginPage;
 public class ArticleEmbedPageTest extends TestBase {
 		ArticleEmbedPage embed;
 		LoginPage page;
+		
+		public Logger log = Logger.getLogger(ArticleEmbedPage.class);
 		
 		public ArticleEmbedPageTest() throws IOException {
 			super();
@@ -115,6 +118,7 @@ public class ArticleEmbedPageTest extends TestBase {
 		{
 			embed.verifyAddParagraph();
 		    embed.selectParagraph();
+		    log.info("***************Gallery Type is selected************");
 		}
 		
 		@Test(priority = 13)
@@ -134,27 +138,34 @@ public class ArticleEmbedPageTest extends TestBase {
 		public void validatesaveasPublished()
 		{
 			Boolean statusMessage = embed.saveasPublished();
+			log.info("***************Article is saved************");
 			Assert.assertTrue(statusMessage);
 		}
 				
-		@Test(priority = 15) 
-		public void validateRightMenus() {
-			Boolean Flag = embed.verifyMenuSettings();
-			Assert.assertTrue(Flag , "Menu Settings is not displayed");
-			Boolean Flag1 = embed.verifymetaTags();
-			Assert.assertTrue(Flag1 , "Meta Tags is not displayed" );
-			Boolean Flag2 = embed.verifysitemap();
-			Assert.assertTrue(Flag2 , "Simple XML SiteMap is not displayed");
-			Boolean Flag3 =  embed.verifyschedulingOptions();
-			Assert.assertTrue(Flag3 , "Scheduling Options is not displayed");
-			Boolean Flag4 = embed.verifyalias();
-			Assert.assertTrue(Flag4 , "URL alias is not displayed");
-			Boolean Flag5 = embed.verifyauthoringInformation();
-			Assert.assertTrue(Flag5 , "Authoring Information is not displayed");
-		    Boolean Flag6 = embed.verifypromotionOption();
-			Assert.assertTrue(Flag6 , "Promotion Options is not displayed");
-					
+//		@Test(priority = 15) 
+//		public void validateRightMenus() {
+//			Boolean Flag = embed.verifyMenuSettings();
+//			Assert.assertTrue(Flag , "Menu Settings is not displayed");
+//			Boolean Flag1 = embed.verifymetaTags();
+//			Assert.assertTrue(Flag1 , "Meta Tags is not displayed" );
+//			Boolean Flag2 = embed.verifysitemap();
+//			Assert.assertTrue(Flag2 , "Simple XML SiteMap is not displayed");
+//			Boolean Flag3 =  embed.verifyschedulingOptions();
+//			Assert.assertTrue(Flag3 , "Scheduling Options is not displayed");
+//			Boolean Flag4 = embed.verifyalias();
+//			Assert.assertTrue(Flag4 , "URL alias is not displayed");
+//			Boolean Flag5 = embed.verifyauthoringInformation();
+//			Assert.assertTrue(Flag5 , "Authoring Information is not displayed");
+//		    Boolean Flag6 = embed.verifypromotionOption();
+//			Assert.assertTrue(Flag6 , "Promotion Options is not displayed");
+//					
+//		}
+		
+		@Test(priority = 15)
+		public void verifyAdvancedMenuItems() {
+			Assert.assertTrue(embed.advancedMenuItem());
 		}
+		
 		@AfterClass
 		public void closeBrowser()
 		{

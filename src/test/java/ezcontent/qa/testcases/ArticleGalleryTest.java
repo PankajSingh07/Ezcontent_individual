@@ -2,6 +2,7 @@ package ezcontent.qa.testcases;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -23,7 +24,7 @@ public class ArticleGalleryTest extends TestBase {
 		super();
 		
 	}
-	
+	public Logger log = Logger.getLogger(ArticleGalleryPage.class);
 	@BeforeClass
 	public void setupSuite() throws IOException
 	{
@@ -46,6 +47,7 @@ public class ArticleGalleryTest extends TestBase {
 	
 	@Test(priority = 1)
     public void validateRedirectionToArticlePage() {
+		log.info("***************Navigating to Article Page************");
 		String pageHeading = Gallery.verifyRedirectionToArticlePage();
 		Assert.assertEquals(pageHeading, prop.getProperty("articleHeading"));
 	}
@@ -90,6 +92,7 @@ public class ArticleGalleryTest extends TestBase {
 	public void selectParagraph() {		
 		Gallery.verifyaddparagraph();
 		Gallery.selectParagraph();
+		log.info("***************Gallery Type is selected************");
 	}
 	
 	@Test(priority = 9)
@@ -106,28 +109,14 @@ public class ArticleGalleryTest extends TestBase {
 	@Test(priority = 12)
 	public void validatesaveasPublished() {
 		Boolean statusMessage = Gallery.saveasPublished();
+		log.info("***************Article is saved************");
 		Assert.assertTrue(statusMessage);
 	}
 	
 	@Test(priority = 11) 
-	public void validateRightMenus() {
-		Boolean Flag = Gallery.verifyMenuSettings();
-		Assert.assertTrue(Flag , "Menu Settings is not displayed");
-		Boolean Flag1 = Gallery.verifymetaTags();
-		Assert.assertTrue(Flag1 , "Meta Tags is not displayed" );
-		Boolean Flag2 = Gallery.verifysitemap();
-		Assert.assertTrue(Flag2 , "Simple XML SiteMap is not displayed");
-		Boolean Flag3 =  Gallery.verifyschedulingOptions();
-		Assert.assertTrue(Flag3 , "Scheduling Options is not displayed");
-		Boolean Flag4 = Gallery.verifyalias();
-		Assert.assertTrue(Flag4 , "URL alias is not displayed");
-		Boolean Flag5 = Gallery.verifyauthoringInformation();
-		Assert.assertTrue(Flag5 , "Authoring Information is not displayed");
-	    Boolean Flag6 = Gallery.verifypromotionOption();
-		Assert.assertTrue(Flag6 , "Promotion Options is not displayed");
-				
+    public void validateAdvancedMenuItem() {
+		Assert.assertTrue(Gallery.advancedMenuItem());
 	}
-	
 	@AfterClass
 	public void closeBrowser()
 	{

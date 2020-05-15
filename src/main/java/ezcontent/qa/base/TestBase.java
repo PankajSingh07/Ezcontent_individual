@@ -4,15 +4,29 @@ package ezcontent.qa.base;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
+
+import ezcontent.qa.pages.ArticleEmbedPage;
+import ezcontent.qa.pages.ArticleGalleryPage;
 import ezcontent.qa.pages.ArticleMapPage;
 import ezcontent.qa.pages.ContentLiveBlogPage;
 import ezcontent.qa.pages.LoginPage;
+import ezcontent.qa.util.TestUtil;
+
 import java.io.File;
 import java.io.FileInputStream;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -22,10 +36,17 @@ public class TestBase {
 
 	public static WebDriver driver;
 	public static Properties prop;
+    public static ArticleEmbedPage embed;
 	public static LoginPage loginpage;
     public static ArticleMapPage articlemapPage;
 	public static ContentLiveBlogPage contentliveblogPage;
-	
+	public static ArticleGalleryPage Gallery;
+	public static ExtentReports extent;
+	public static ExtentTest logger;
+	public static ExtentHtmlReporter reporter;
+
+	public Logger log = Logger.getLogger(TestBase.class);
+
 	
 
 	static String currentDir = System.getProperty("user.dir");
@@ -120,17 +141,42 @@ public class TestBase {
 	@BeforeClass
 	public void setup() throws IOException {
 		browserLaunch();
+		log.info("******** Invoking Browser ********");
 		loginpage = new LoginPage();
 		articlemapPage = new ArticleMapPage();
 		contentliveblogPage = new ContentLiveBlogPage();
+		embed = new ArticleEmbedPage();
+		Gallery = new ArticleGalleryPage();
+		reporter =  new ExtentHtmlReporter(currentDir+File.separator+"Reports"+File.separator+TestUtil.timeStamp()+".html");
+		extent = new ExtentReports();
+		extent.attachReporter(reporter);
 		
 	}
-	
 	@AfterClass
     public void closeBrowser()
 		{
 			browserQuit();
+			extent.flush();
 		}
+	
+	@AfterMethod
+	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {   
+	    String path = TestUtil.captureScreenshot();
+	 		if(ITestResult.FAILURE == testResult.getStatus())
+	 		{
+	 			logger.fail(testResult.getThrowable().getMessage(), MediaEntityBuilder.createScreenCaptureFromPath(path).build());	
+	 	    }
+	 		else if(ITestResult.SUCCESS == testResult.getStatus())
+	 		{
+	 			logger.pass(testResult.getName());
+	 		}
+	 		else if(testResult.getStatus() == ITestResult.SKIP){
+	 		logger.skip(testResult.getThrowable().getMessage(),MediaEntityBuilder.createScreenCaptureFromPath(path).build());
+	 		// logger.log(LogStatus.SKIP, "Test Case Skipped is "+result.getName());
+	 		}
+	}
+
+	
 	
 
 	

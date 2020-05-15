@@ -4,16 +4,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openqa.selenium.JavascriptExecutor;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import ezcontent.qa.base.TestBase;
 import ezcontent.qa.util.TestUtil;
 import ezcontent.qa.util.Wait;
 
 public class ArticleEmbedPage extends TestBase{
+	
+	
 		
 		@FindBy(xpath = "//a[@href='/admin/content']")
 		WebElement Content;
@@ -120,29 +123,32 @@ public class ArticleEmbedPage extends TestBase{
 		@FindBy(xpath = "//div[@aria-label = 'Status message']")
 		WebElement statusMessage;
 		
-		@FindBy(xpath = "//details[@id = 'edit-menu']/summary")
-		WebElement menuSettings;
+//		@FindBy(xpath = "//details[@id = 'edit-menu']/summary")
+//		WebElement menuSettings;
+//		
+//		@FindBy(xpath = "//details[@id = 'edit-field-meta-tags-0']/summary")
+//		WebElement metaTags;
+//		
+//		@FindBy(xpath = "//details[@id = 'edit-simple-sitemap']/summary")
+//		WebElement sitemap;
+//		
+//		@FindBy(xpath = "//details[@id = 'edit-scheduler-settings']/summary")
+//		WebElement schedulingOptions;
+//		
+//		@FindBy(xpath = "//details[@id = 'edit-path-0']/summary")
+//		WebElement alias;
+//		
+//		@FindBy(xpath = "//details[@id = 'edit-author']/summary")
+//		WebElement authoringInformation;
+//		
+//		@FindBy(xpath = "//details[@id = 'edit-options']/summary")
+//		WebElement promotionOption;
+//		
+//		@FindBy(xpath = "//div[@id = 'edit-advanced']/details/summary")
+//		List<WebElement> menus;
 		
-		@FindBy(xpath = "//details[@id = 'edit-field-meta-tags-0']/summary")
-		WebElement metaTags;
-		
-		@FindBy(xpath = "//details[@id = 'edit-simple-sitemap']/summary")
-		WebElement sitemap;
-		
-		@FindBy(xpath = "//details[@id = 'edit-scheduler-settings']/summary")
-		WebElement schedulingOptions;
-		
-		@FindBy(xpath = "//details[@id = 'edit-path-0']/summary")
-		WebElement alias;
-		
-		@FindBy(xpath = "//details[@id = 'edit-author']/summary")
-		WebElement authoringInformation;
-		
-		@FindBy(xpath = "//details[@id = 'edit-options']/summary")
-		WebElement promotionOption;
-		
-		@FindBy(xpath = "//div[@id = 'edit-advanced']/details/summary")
-		List<WebElement> menus;
+		@FindBy(xpath="//summary[@class='claro-details__summary claro-details__summary--accordion-item']")
+		List<WebElement> articleContentList;
 		
 		
 		public ArticleEmbedPage() throws IOException{
@@ -302,40 +308,59 @@ public class ArticleEmbedPage extends TestBase{
 			return statusMessage.isDisplayed();			
 		}
 		
-		public boolean verifyMenuSettings() {
-			 TestUtil.mouseClick(menuSettings);
-			 return menuSettings.isDisplayed();
-		}
+//		public boolean verifyMenuSettings() {
+//			 TestUtil.mouseClick(menuSettings);
+//			 return menuSettings.isDisplayed();
+//		}
+//		
+//		public boolean verifymetaTags() {
+//			TestUtil.mouseClick(metaTags);
+//			return metaTags.isDisplayed();
+//		}
+//		
+//		public boolean verifysitemap() {
+//			TestUtil.mouseClick(sitemap);
+//			return sitemap.isDisplayed();
+//		}
+//		
+//		public boolean verifyschedulingOptions() {
+//			TestUtil.mouseClick(schedulingOptions);
+//			return schedulingOptions.isDisplayed();
+//		}
+//		
+//		public boolean verifyalias() {
+//			TestUtil.mouseClick(alias);
+//			return alias.isDisplayed();
+//		}
+//		
+//		public boolean verifyauthoringInformation() { 
+//			TestUtil.mouseClick(authoringInformation);
+//			return authoringInformation.isDisplayed();
+//		}
+//		
+//		public boolean verifypromotionOption() {
+//			TestUtil.mouseClick(promotionOption);
+//			return promotionOption.isDisplayed();
+//		}
 		
-		public boolean verifymetaTags() {
-			TestUtil.mouseClick(metaTags);
-			return metaTags.isDisplayed();
-		}
-		
-		public boolean verifysitemap() {
-			TestUtil.mouseClick(sitemap);
-			return sitemap.isDisplayed();
-		}
-		
-		public boolean verifyschedulingOptions() {
-			TestUtil.mouseClick(schedulingOptions);
-			return schedulingOptions.isDisplayed();
-		}
-		
-		public boolean verifyalias() {
-			TestUtil.mouseClick(alias);
-			return alias.isDisplayed();
-		}
-		
-		public boolean verifyauthoringInformation() { 
-			TestUtil.mouseClick(authoringInformation);
-			return authoringInformation.isDisplayed();
-		}
-		
-		public boolean verifypromotionOption() {
-			TestUtil.mouseClick(promotionOption);
-			return promotionOption.isDisplayed();
-		}
+		  public boolean advancedMenuItem () {
+				boolean result = false;
+			    List<WebElement> menus = articleContentList;
+			      for(int i =0;i< menus.size() ; i++) 
+			      {
+			          if(menus.get(i).isDisplayed())
+			            {
+		                     TestUtil.mouseClick(menus.get(i));
+		                     System.out.println(menus.get(i).getText()); 
+		                     result = true;  
+			            }     	
+			      }
+			    if (result == false) 
+			    {	
+			       System.out.println("Advanced Menu Item is not found"); 
+			    }
+			 return result;    
+			}
 		
 		
 			

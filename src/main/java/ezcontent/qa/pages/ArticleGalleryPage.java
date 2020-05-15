@@ -2,6 +2,7 @@ package ezcontent.qa.pages;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -13,6 +14,7 @@ import ezcontent.qa.util.Wait;
 public class ArticleGalleryPage extends TestBase {
 
 	ArticleEmbedPage em ;
+
 	
 	@FindBy(xpath = "//div[@class = 'paragraphs-add-dialog js-hide ui-dialog-content ui-widget-content']/ul/li[3]/input")
 	WebElement Gallery;
@@ -65,6 +67,7 @@ public class ArticleGalleryPage extends TestBase {
 	}
 	
 	public String verifyRedirectionToArticlePage() {
+		
 		return em.verifyRedirectionToArticlePage();
 	}
 	
@@ -99,7 +102,7 @@ public class ArticleGalleryPage extends TestBase {
 	public boolean selectParagraph() {
 		TestUtil.onClick(Gallery);
 		Wait.visibiltyOfElement(5, Title);
-	    if(Title.isDisplayed())
+        if(Title.isDisplayed())
 	    {
 	    	TitleField.sendKeys("Title Text");
 	    }
@@ -132,35 +135,13 @@ public class ArticleGalleryPage extends TestBase {
 	}
 	
 	public boolean saveasPublished() {
+
 		return em.saveasPublished();
 	}
-		
-	public boolean verifyMenuSettings() {
-		 return em.verifyMenuSettings();
-	}
 	
-	public boolean verifymetaTags() {
-		return em.verifymetaTags();
+	public boolean advancedMenuItem() {
+		return em.advancedMenuItem();
 	}
-	
-	public boolean verifysitemap() {
-		return em.verifysitemap();
-	}
-	
-	public boolean verifyschedulingOptions() {
-         return em.verifyschedulingOptions();
-	}
-	
-	public boolean verifyalias() {
-		return em.verifyalias();
-	}
-	
-	public boolean verifyauthoringInformation() { 
-	    return em.verifyauthoringInformation();
-	}
-	
-	public boolean verifypromotionOption() {
-		return em.verifypromotionOption();
-	}
+
 
 }
