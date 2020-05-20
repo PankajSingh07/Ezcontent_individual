@@ -1,7 +1,7 @@
 package ezcontent.qa.util;
 
 import org.openqa.selenium.Alert;
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -131,6 +131,15 @@ public static void switchFrameByWebElement(WebElement frameElement)
     {
 		
 		new Actions(driver).click(element).perform();
+	}
+	
+	//below element locators are common and not content dependent
+	public static void deleteContent() throws Exception
+	{
+		driver.findElement(By.xpath("//a[@class='nav-link'][contains(text(),'Delete')]")).click();
+		Wait.Pause(5000);
+		driver.findElement(By.xpath("//input[@id='edit-submit']")).click();
+		
 	}
 	
 }

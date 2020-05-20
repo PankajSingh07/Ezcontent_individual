@@ -93,8 +93,11 @@ public class ContentAuthorTest extends TestBase {
 	}
 	
 	@Test(priority = 10)
-	public void saveTheContent() {
+	public void saveTheContent() throws Exception {
 		author.saveContent();
+		Wait.Pause(5000);
+		TestUtil.deleteContent();
+
 	}
 
 	@AfterClass

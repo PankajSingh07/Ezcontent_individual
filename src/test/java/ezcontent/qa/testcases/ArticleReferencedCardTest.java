@@ -9,23 +9,24 @@ import org.testng.annotations.Test;
 
 import ezcontent.qa.base.TestBase;
 import ezcontent.qa.pages.ArticleFAQPage;
+import ezcontent.qa.pages.ArticleReferencedCardPage;
 import ezcontent.qa.pages.LoginPage;
 import ezcontent.qa.util.TestUtil;
 import ezcontent.qa.util.Wait;
 
-public class ArticleFAQTest extends TestBase{
-	
-	public ArticleFAQTest() {
+public class ArticleReferencedCardTest extends TestBase
+{
+	public ArticleReferencedCardTest() {
 		super();
 	}
 	
-	ArticleFAQPage article;
+	ArticleReferencedCardPage article;
 	LoginPage loginpage;
 	
 	@BeforeClass
 	public void setup() throws IOException {
 		browserLaunch();
-		article = new ArticleFAQPage();
+		article = new ArticleReferencedCardPage();
 		loginpage = new LoginPage();
 		
 	}
@@ -61,14 +62,14 @@ public class ArticleFAQTest extends TestBase{
 	
 	@Test(priority = 5)
 	public void enterBasicDetailsTest() throws Exception {
-		article.enterBasicsDetails(prop.getProperty("FAQTitle"), prop.getProperty("FAQShortTitle"), prop.getProperty("FAQSubHead"), prop.getProperty("FAQAuthor"));
+		article.enterBasicsDetails(prop.getProperty("RCTitle"), prop.getProperty("RCShortTitle"), prop.getProperty("RCSubHead"), prop.getProperty("RCAuthor"));
 		System.out.println("Basic Details Entered");
 	}
 	
 	
 	@Test(priority = 6)
 	public void enterTeaserDetailTest() {
-		article.enterTeaserDetails(prop.getProperty("FAQSummary"));	
+		article.enterTeaserDetails(prop.getProperty("RCSummary"));	
 		System.out.println("Teaser deatil entered");
 	}
 	
@@ -77,28 +78,28 @@ public class ArticleFAQTest extends TestBase{
 		article.uploadThumbnailImage();		
 	}
 	
-	
+
 	@Test(priority = 8)
 	public void enterContentDetailsTest() throws Exception {
 		
-		article.enterContentDetails(prop.getProperty("FAQQues"), prop.getProperty("FAQAnswer"));
+		article.enterContentDetails(prop.getProperty("RCSearch1"), prop.getProperty("RCSearch2"));
 	}
 	
-	@Test(priority = 9)
+	@Test(dependsOnMethods = {"enterContentDetailsTest"})
 	public void contentFunctionalitiesTest() throws Exception {
 		article.contentFunctionalities();
 	}
 	
-	@Test(priority = 10)
+	@Test(dependsOnMethods = {"contentFunctionalitiesTest"})
 	public void enterTaxonomyTest() throws Exception {
-		article.enterTaxonomy(prop.getProperty("FAQTagName"));
+		article.enterTaxonomy(prop.getProperty("RCTagName"));
 	}
 	
 	@Test(priority = 11)
 	public void saveContentTest() throws Exception {
 		article.saveContent();
-		Wait.Pause(5000);
-		TestUtil.deleteContent();
+	Wait.Pause(5000);
+	TestUtil.deleteContent();
 	}
 
 	@AfterClass

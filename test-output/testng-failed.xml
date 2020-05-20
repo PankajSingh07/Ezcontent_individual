@@ -3,12 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="ezcontent.qa.testcases.ArticleFAQTest">
+      <class name="ezcontent.qa.testcases.ArticleReferencedCardTest">
         <methods>
           <include name="enterTaxonomyTest"/>
+          <include name="contentFunctionalitiesTest"/>
+          <include name="enterContentDetailsTest"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- ezcontent.qa.testcases.ArticleFAQTest -->
+      </class> <!-- ezcontent.qa.testcases.ArticleReferencedCardTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

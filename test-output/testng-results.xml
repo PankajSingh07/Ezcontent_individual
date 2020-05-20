@@ -1,57 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="10" passed="10">
+<testng-results skipped="0" failed="0" ignored="0" total="11" passed="11">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="86012" started-at="2020-05-10T00:34:16 IST" finished-at="2020-05-10T00:35:42 IST">
+  <suite name="Default suite" duration-ms="109802" started-at="2020-05-21T02:31:13 IST" finished-at="2020-05-21T02:33:02 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="86012" started-at="2020-05-10T00:34:16 IST" finished-at="2020-05-10T00:35:42 IST">
-      <class name="ezcontent.qa.testcases.ArticleFAQTest">
-        <test-method status="PASS" signature="setup()[pri:0, instance:ezcontent.qa.testcases.ArticleFAQTest@23faf8f2]" name="setup" is-config="true" duration-ms="12976" started-at="2020-05-10T00:34:16 IST" finished-at="2020-05-10T00:34:29 IST">
+    <test name="Default test" duration-ms="109802" started-at="2020-05-21T02:31:13 IST" finished-at="2020-05-21T02:33:02 IST">
+      <class name="ezcontent.qa.testcases.ArticleReferencedCardTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:ezcontent.qa.testcases.ArticleReferencedCardTest@4e7dc304]" name="setup" is-config="true" duration-ms="11864" started-at="2020-05-21T02:31:13 IST" finished-at="2020-05-21T02:31:25 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="loginFunctionality()[pri:1, instance:ezcontent.qa.testcases.ArticleFAQTest@23faf8f2]" name="loginFunctionality" duration-ms="7441" started-at="2020-05-10T00:34:29 IST" finished-at="2020-05-10T00:34:36 IST">
+        <test-method status="PASS" signature="loginFunctionality()[pri:1, instance:ezcontent.qa.testcases.ArticleReferencedCardTest@4e7dc304]" name="loginFunctionality" duration-ms="4314" started-at="2020-05-21T02:31:25 IST" finished-at="2020-05-21T02:31:29 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginFunctionality -->
-        <test-method status="PASS" signature="reachToArticlePageTest()[pri:2, instance:ezcontent.qa.testcases.ArticleFAQTest@23faf8f2]" name="reachToArticlePageTest" duration-ms="8194" started-at="2020-05-10T00:34:36 IST" finished-at="2020-05-10T00:34:45 IST">
+        <test-method status="PASS" signature="reachToArticlePageTest()[pri:2, instance:ezcontent.qa.testcases.ArticleReferencedCardTest@4e7dc304]" name="reachToArticlePageTest" duration-ms="6468" started-at="2020-05-21T02:31:29 IST" finished-at="2020-05-21T02:31:35 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reachToArticlePageTest -->
-        <test-method status="PASS" signature="validateTabTitleTest()[pri:3, instance:ezcontent.qa.testcases.ArticleFAQTest@23faf8f2]" name="validateTabTitleTest" duration-ms="12" started-at="2020-05-10T00:34:45 IST" finished-at="2020-05-10T00:34:45 IST">
+        <test-method status="PASS" signature="validateTabTitleTest()[pri:3, instance:ezcontent.qa.testcases.ArticleReferencedCardTest@4e7dc304]" name="validateTabTitleTest" duration-ms="18" started-at="2020-05-21T02:31:35 IST" finished-at="2020-05-21T02:31:35 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateTabTitleTest -->
-        <test-method status="PASS" signature="validateHeaderTitleTest()[pri:4, instance:ezcontent.qa.testcases.ArticleFAQTest@23faf8f2]" name="validateHeaderTitleTest" duration-ms="34" started-at="2020-05-10T00:34:45 IST" finished-at="2020-05-10T00:34:45 IST">
+        <test-method status="PASS" signature="validateHeaderTitleTest()[pri:4, instance:ezcontent.qa.testcases.ArticleReferencedCardTest@4e7dc304]" name="validateHeaderTitleTest" duration-ms="39" started-at="2020-05-21T02:31:35 IST" finished-at="2020-05-21T02:31:35 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateHeaderTitleTest -->
-        <test-method status="PASS" signature="enterBasicDetailsTest()[pri:5, instance:ezcontent.qa.testcases.ArticleFAQTest@23faf8f2]" name="enterBasicDetailsTest" duration-ms="2999" started-at="2020-05-10T00:34:45 IST" finished-at="2020-05-10T00:34:48 IST">
+        <test-method status="PASS" signature="enterBasicDetailsTest()[pri:5, instance:ezcontent.qa.testcases.ArticleReferencedCardTest@4e7dc304]" name="enterBasicDetailsTest" duration-ms="3511" started-at="2020-05-21T02:31:35 IST" finished-at="2020-05-21T02:31:39 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- enterBasicDetailsTest -->
-        <test-method status="PASS" signature="enterTeaserDetailTest()[pri:6, instance:ezcontent.qa.testcases.ArticleFAQTest@23faf8f2]" name="enterTeaserDetailTest" duration-ms="384" started-at="2020-05-10T00:34:48 IST" finished-at="2020-05-10T00:34:48 IST">
+        <test-method status="PASS" signature="enterTeaserDetailTest()[pri:6, instance:ezcontent.qa.testcases.ArticleReferencedCardTest@4e7dc304]" name="enterTeaserDetailTest" duration-ms="360" started-at="2020-05-21T02:31:39 IST" finished-at="2020-05-21T02:31:39 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- enterTeaserDetailTest -->
-        <test-method status="PASS" signature="uploadThumbnailImageTest()[pri:7, instance:ezcontent.qa.testcases.ArticleFAQTest@23faf8f2]" name="uploadThumbnailImageTest" duration-ms="13549" started-at="2020-05-10T00:34:48 IST" finished-at="2020-05-10T00:35:02 IST">
+        <test-method status="PASS" signature="uploadThumbnailImageTest()[pri:7, instance:ezcontent.qa.testcases.ArticleReferencedCardTest@4e7dc304]" name="uploadThumbnailImageTest" duration-ms="13659" started-at="2020-05-21T02:31:39 IST" finished-at="2020-05-21T02:31:53 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- uploadThumbnailImageTest -->
-        <test-method status="PASS" signature="enterContentDetailsTest()[pri:8, instance:ezcontent.qa.testcases.ArticleFAQTest@23faf8f2]" name="enterContentDetailsTest" duration-ms="13214" started-at="2020-05-10T00:35:02 IST" finished-at="2020-05-10T00:35:15 IST">
+        <test-method status="PASS" signature="enterContentDetailsTest()[pri:8, instance:ezcontent.qa.testcases.ArticleReferencedCardTest@4e7dc304]" name="enterContentDetailsTest" duration-ms="24393" started-at="2020-05-21T02:31:53 IST" finished-at="2020-05-21T02:32:17 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- enterContentDetailsTest -->
-        <test-method status="PASS" signature="contentFunctionalitiesTest()[pri:9, instance:ezcontent.qa.testcases.ArticleFAQTest@23faf8f2]" name="contentFunctionalitiesTest" duration-ms="19593" started-at="2020-05-10T00:35:15 IST" finished-at="2020-05-10T00:35:34 IST">
+        <test-method status="PASS" signature="contentFunctionalitiesTest()[pri:0, instance:ezcontent.qa.testcases.ArticleReferencedCardTest@4e7dc304]" name="contentFunctionalitiesTest" duration-ms="16578" started-at="2020-05-21T02:32:18 IST" depends-on-methods="ezcontent.qa.testcases.ArticleReferencedCardTest.enterContentDetailsTest" finished-at="2020-05-21T02:32:34 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- contentFunctionalitiesTest -->
-        <test-method status="PASS" signature="enterTaxonomyTest()[pri:10, instance:ezcontent.qa.testcases.ArticleFAQTest@23faf8f2]" name="enterTaxonomyTest" duration-ms="7551" started-at="2020-05-10T00:35:34 IST" finished-at="2020-05-10T00:35:42 IST">
+        <test-method status="PASS" signature="enterTaxonomyTest()[pri:0, instance:ezcontent.qa.testcases.ArticleReferencedCardTest@4e7dc304]" name="enterTaxonomyTest" duration-ms="7432" started-at="2020-05-21T02:32:34 IST" depends-on-methods="ezcontent.qa.testcases.ArticleReferencedCardTest.contentFunctionalitiesTest" finished-at="2020-05-21T02:32:42 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- enterTaxonomyTest -->
-      </class> <!-- ezcontent.qa.testcases.ArticleFAQTest -->
+        <test-method status="PASS" signature="saveContentTest()[pri:11, instance:ezcontent.qa.testcases.ArticleReferencedCardTest@4e7dc304]" name="saveContentTest" duration-ms="20962" started-at="2020-05-21T02:32:42 IST" finished-at="2020-05-21T02:33:02 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- saveContentTest -->
+      </class> <!-- ezcontent.qa.testcases.ArticleReferencedCardTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
