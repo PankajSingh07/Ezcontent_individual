@@ -99,9 +99,4 @@ public class ContentAuthorTest extends TestBase {
 		TestUtil.deleteContent();
 	}
 
-	@AfterClass
-	public void closeBrowser() {
-		browserQuit();
-	}
-
 }

@@ -159,22 +159,22 @@ public class TestBase {
 			extent.flush();
 		}
 	
-	@AfterMethod
-	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {   
-	    String path = TestUtil.captureScreenshot();
-	 		if(ITestResult.FAILURE == testResult.getStatus())
-	 		{
-	 			logger.fail(testResult.getThrowable().getMessage(), MediaEntityBuilder.createScreenCaptureFromPath(path).build());	
-	 	    }
-	 		else if(ITestResult.SUCCESS == testResult.getStatus())
-	 		{
-	 			logger.pass(testResult.getName());
-	 		}
-	 		else if(testResult.getStatus() == ITestResult.SKIP){
-	 		logger.skip(testResult.getThrowable().getMessage(),MediaEntityBuilder.createScreenCaptureFromPath(path).build());
-	 		// logger.log(LogStatus.SKIP, "Test Case Skipped is "+result.getName());
-	 		}
-	}
+//	@AfterMethod
+//	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {   
+//	    String path = TestUtil.captureScreenshot();
+//	 		if(ITestResult.FAILURE == testResult.getStatus())
+//	 		{
+//	 			logger.fail(testResult.getThrowable().getMessage(), MediaEntityBuilder.createScreenCaptureFromPath(path).build());	
+//	 	    }
+//	 		else if(ITestResult.SUCCESS == testResult.getStatus())
+//	 		{
+//	 			logger.pass(testResult.getName());
+//	 		}
+//	 		else if(testResult.getStatus() == ITestResult.SKIP){
+//	 		logger.skip(testResult.getThrowable().getMessage(),MediaEntityBuilder.createScreenCaptureFromPath(path).build());
+//	 		// logger.log(LogStatus.SKIP, "Test Case Skipped is "+result.getName());
+//	 		}
+//	}
 
 	
 	
