@@ -9,8 +9,16 @@ import ezcontent.qa.base.TestBase;
 import ezcontent.qa.util.TestUtil;
 import ezcontent.qa.util.Wait;
 
-public class ArticleReferencedCardPage extends TestBase {
-
+public class ArticleCardPage extends TestBase {
+	
+/*	Page Object Factory
+	By Content = By.xapth("//a[@class='toolbar-icon toolbar-icon-system-admin-content']")
+	public void Search() {
+		driver.findElement(Content);
+	}
+*/
+	
+	//Page Factory		
 	@FindBy(xpath = "//a[@class='toolbar-icon toolbar-icon-system-admin-content']")
 	WebElement Content;
 
@@ -92,7 +100,7 @@ public class ArticleReferencedCardPage extends TestBase {
 	@FindBy(id = "edit-submit")
 	WebElement save;
 
-	public ArticleReferencedCardPage() {
+	public ArticleCardPage() {
 		PageFactory.initElements(driver, this);
 	}
 

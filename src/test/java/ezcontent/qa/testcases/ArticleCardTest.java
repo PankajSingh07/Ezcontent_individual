@@ -14,9 +14,9 @@ import ezcontent.qa.pages.LoginPage;
 import ezcontent.qa.util.TestUtil;
 import ezcontent.qa.util.Wait;
 
-public class ArticleReferencedCardTest extends TestBase
+public class ArticleCardTest extends TestBase
 {
-	public ArticleReferencedCardTest() {
+	public ArticleCardTest() {
 		super();
 	}
 	
@@ -103,10 +103,10 @@ public class ArticleReferencedCardTest extends TestBase
 	TestUtil.deleteContent();
 	}
 
-//	@AfterClass
-//	public void closeBrowser() {
-//		browserQuit();
-//	}	
+	@AfterClass
+	public void closeBrowser() {
+		browserQuit();
+	}	
 	
 	
 }
