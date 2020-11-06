@@ -42,8 +42,14 @@ public class ContentAuthorTest extends TestBase {
 	
 	
 	@Test(priority = 2)
-	public void navigateToAuthorPage() throws InterruptedException {
-		author.reachToAuthorPage();
+	public void navigateToAuthorPage() {
+		try {
+			
+			author.reachToAuthorPage();}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
 
 	@Test(priority = 3)
